@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class HomeView: UIView {
+class HomeView: UIView{
     
     let searchCatView = UIView(frame: .zero)
     let searchWordView = UIView(frame: .zero)
@@ -15,7 +15,7 @@ class HomeView: UIView {
     let artistsButton = UIButton(frame: .zero)
     let artworkButton = UIButton(frame: .zero)
     let searchCatStack = UIStackView(frame: .zero)
-    let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    let textField = UITextField(frame: .zero)
 
     
     
@@ -64,12 +64,13 @@ extension HomeView {
             textField.centerXAnchor.constraint(equalTo: searchWordView.centerXAnchor),
             textField.centerYAnchor.constraint(equalTo: searchWordView.centerYAnchor),
             
-            textField.topAnchor.constraint(equalToSystemSpacingBelow: searchWordView.topAnchor, multiplier: 1),
-            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: searchWordView.leadingAnchor, multiplier: 1),
-            searchWordView.bottomAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 1),
-            searchWordView.trailingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 1)
+            textField.topAnchor.constraint(equalToSystemSpacingBelow: searchWordView.topAnchor, multiplier: 5),
+            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: searchWordView.leadingAnchor, multiplier: 5),
+            searchWordView.bottomAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 5),
+            searchWordView.trailingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 5)
             
         ])
+        
         
         searchCatView.backgroundColor = .red
         searchWordView.backgroundColor = .yellow
@@ -80,7 +81,11 @@ extension HomeView {
         searchCatStack.distribution = .fillEqually
         artistsButton.setTitle("Artists", for: .normal)
         artworkButton.setTitle("Artworks", for: .normal)
-        textField.backgroundColor = .gray
+        textField.backgroundColor = .white
+        
+  
         
     }
 }
+
+
