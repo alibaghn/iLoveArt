@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 
-struct Space: Codable {
-    var url: String
+enum SearchCategory {
+    case Artist, Artworks
 }
+

@@ -1,16 +1,19 @@
 //
 //  HomeView.swift
-//  SpaceExplorer
+//  ArtGallery
 //
 //  Created by Ali Bagherinia on 11/16/22.
 //
 import UIKit
 
 class HomeView: UIView {
-    let dailyImageView = UIImageView(image: UIImage(named: "defaultImage"))
-    let marsTempView = UIView(frame: .zero)
-    let asteroidView = UIView(frame: .zero)
-    let stackView = UIStackView(frame: .zero)
+    let searchCatView = UIView(frame: .zero)
+    let searchWordView = UIView(frame: .zero)
+    let HomeStack = UIStackView(frame: .zero)
+    let artistsButton = UIButton(frame: .zero)
+    let artworkButton = UIButton(frame: .zero)
+    let searchCatStack = UIStackView(frame: .zero)
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,27 +31,38 @@ class HomeView: UIView {
 extension HomeView {
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        dailyImageView.translatesAutoresizingMaskIntoConstraints = false
-        marsTempView.translatesAutoresizingMaskIntoConstraints = false
+        HomeStack.translatesAutoresizingMaskIntoConstraints = false
+        searchCatView.translatesAutoresizingMaskIntoConstraints = false
+        searchWordView.translatesAutoresizingMaskIntoConstraints = false
+        artistsButton.translatesAutoresizingMaskIntoConstraints = false
+        artworkButton.translatesAutoresizingMaskIntoConstraints = false
+        searchCatStack.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(stackView)
-        stackView.addArrangedSubview(dailyImageView)
-        stackView.addArrangedSubview(marsTempView)
-        stackView.addArrangedSubview(asteroidView)
+        addSubview(HomeStack)
+        HomeStack.addArrangedSubview(searchCatView)
+        HomeStack.addArrangedSubview(searchWordView)
+        searchCatStack.addArrangedSubview(artworkButton)
+        searchCatStack.addArrangedSubview(artistsButton)
+        searchCatView.addSubview(searchCatStack)
+
+        
+
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            HomeStack.topAnchor.constraint(equalTo: topAnchor),
+            HomeStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            HomeStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            HomeStack.trailingAnchor.constraint(equalTo: trailingAnchor)
+            
             
         ])
         
-        dailyImageView.backgroundColor = .red
-        marsTempView.backgroundColor = .yellow
-        asteroidView.backgroundColor = .orange
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        searchCatView.backgroundColor = .red
+        searchWordView.backgroundColor = .yellow
+        HomeStack.axis = .vertical
+        searchCatStack.axis = .horizontal
+        HomeStack.distribution = .fillEqually
+        artistsButton.setTitle("Artists", for: .normal)
+        artworkButton.setTitle("Artworks", for: .normal)
     }
 }
