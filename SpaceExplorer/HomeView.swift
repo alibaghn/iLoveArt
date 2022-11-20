@@ -7,7 +7,7 @@
 import UIKit
 
 class HomeView: UIView {
-    let dailyImageView = UIView(frame: .zero)
+    let dailyImageView = UIImageView(image: UIImage(named: "defaultImage"))
     let marsTempView = UIView(frame: .zero)
     let asteroidView = UIView(frame: .zero)
     let stackView = UIStackView(frame: .zero)
@@ -16,6 +16,7 @@ class HomeView: UIView {
         super.init(frame: frame)
 
         setupUI()
+        
     }
   
     @available(*, unavailable)
