@@ -7,11 +7,15 @@
 
 import UIKit
 
+
+
 class ResultViewController: UIViewController {
     let resultView = ResultView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
     }
 }
 

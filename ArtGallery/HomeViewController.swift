@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
     let modelController = ModelController.shared
     let homeView = HomeView()
     var searchCategory = SearchCategory.Artworks
+    
 
 //    func loadImage() async {
 //        let url = URL(string: modelController.dailyImageUrl!)!
@@ -25,7 +26,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeView.textField.delegate = self
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
         setupUI()
@@ -37,15 +37,17 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController {
-    @objc func navButtonFunc(sender: UIButton) {
-        view.window?.rootViewController = ResultViewController()
-        // TODO: see if you can add the same to resultviewcontroller to get back here
-    }
+    
+//    @objc func navButtonFunc(sender: UIButton) {
+//
+//        view.window?.rootViewController = ResultViewController()
+//
+//    }
 
     func setupUI() {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(homeView)
-        homeView.navButton.addTarget(self, action: #selector(navButtonFunc), for: .touchUpInside)
+        
 
         NSLayoutConstraint.activate([
             homeView.topAnchor.constraint(equalTo: view.topAnchor),

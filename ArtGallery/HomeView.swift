@@ -6,21 +6,17 @@
 //
 import UIKit
 
-class HomeView: UIView{
-    
-    let searchCatView = UIView(frame: .zero)
-    let searchWordView = UIView(frame: .zero)
-    let navigationView = UIView(frame: .zero)
-    let homeStack = UIStackView(frame: .zero)
-    let artistsButton = UIButton(frame: .zero)
-    let catButton = UIButton(frame: .zero)
-    let searchCatStack = UIStackView(frame: .zero)
-    let textField = UITextField(frame: .zero)
-    let navButton = UIButton(frame: .zero)
+class HomeView: UIView {
+    let searchCatView = UIView()
+    let searchWordView = UIView()
+    let navigationView = UIView()
+    let homeStack = UIStackView()
+    let artistsButton = UIButton()
+    let catButton = UIButton()
+    let searchCatStack = UIStackView()
+    let textField = UITextField()
+    let navButton = UIButton()
 
-
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -47,7 +43,6 @@ extension HomeView {
         searchCatStack.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         navButton.translatesAutoresizingMaskIntoConstraints = false
-        
         
         addSubview(homeStack)
         homeStack.addArrangedSubview(searchCatView)
@@ -81,7 +76,6 @@ extension HomeView {
             
         ])
         
-        
         searchCatView.backgroundColor = .red
         searchWordView.backgroundColor = .yellow
         navigationView.backgroundColor = .orange
@@ -93,9 +87,5 @@ extension HomeView {
         catButton.setTitle("Artworks", for: .normal)
         textField.backgroundColor = .white
         navButton.setTitle("Get Results", for: .normal)
-       
-        
     }
 }
-
-

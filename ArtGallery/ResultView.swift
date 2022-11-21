@@ -3,11 +3,13 @@ import UIKit
 
 class ResultView: UIView {
     let dailyImageView = UIView(frame: .zero)
+ 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
+        
     }
     
     @available(*, unavailable)
@@ -29,5 +31,6 @@ extension ResultView {
         ])
         
         dailyImageView.backgroundColor = .red
+        
     }
 }
