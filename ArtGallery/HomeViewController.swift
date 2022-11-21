@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         homeView.textField.delegate = self
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-         view.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(tapGesture)
         setupUI()
 //        Task {
 //            await ModelController.shared.fetchDailyImage()
@@ -37,9 +37,15 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController {
+    @objc func navButtonFunc(sender: UIButton) {
+        view.window?.rootViewController = ResultViewController()
+        // TODO: see if you can add the same to resultviewcontroller to get back here
+    }
+
     func setupUI() {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(homeView)
+        homeView.navButton.addTarget(self, action: #selector(navButtonFunc), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             homeView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -50,7 +56,7 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController: UITextFieldDelegate{
+extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         print(textField.text!)

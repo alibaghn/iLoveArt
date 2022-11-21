@@ -13,6 +13,8 @@
 		0CFAE7AA2925F7B100E2D7D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7A92925F7B100E2D7D0 /* HomeView.swift */; };
 		0CFAE7AC29288A6000E2D7D0 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7AB29288A6000E2D7D0 /* ModelController.swift */; };
 		0CFAE7AE292976C000E2D7D0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7AD292976C000E2D7D0 /* Model.swift */; };
+		0CFAE7B0292AA95D00E2D7D0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7AF292AA95D00E2D7D0 /* ResultViewController.swift */; };
+		0CFAE7B2292AA97200E2D7D0 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFAE7B1292AA97200E2D7D0 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0CFAE7A92925F7B100E2D7D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0CFAE7AB29288A6000E2D7D0 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		0CFAE7AD292976C000E2D7D0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0CFAE7AF292AA95D00E2D7D0 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		0CFAE7B1292AA97200E2D7D0 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				0CFAE7AB29288A6000E2D7D0 /* ModelController.swift */,
 				0CFAE7A92925F7B100E2D7D0 /* HomeView.swift */,
 				0CFAE7992925E9AE00E2D7D0 /* HomeViewController.swift */,
+				0CFAE7AF292AA95D00E2D7D0 /* ResultViewController.swift */,
+				0CFAE7B1292AA97200E2D7D0 /* ResultView.swift */,
 				0CFAE7AD292976C000E2D7D0 /* Model.swift */,
 				0CFAE79E2925E9AF00E2D7D0 /* Assets.xcassets */,
 				0CFAE7A32925E9AF00E2D7D0 /* Info.plist */,
@@ -141,6 +147,8 @@
 				0CFAE7AC29288A6000E2D7D0 /* ModelController.swift in Sources */,
 				0CFAE79A2925E9AE00E2D7D0 /* HomeViewController.swift in Sources */,
 				0CFAE7962925E9AE00E2D7D0 /* AppDelegate.swift in Sources */,
+				0CFAE7B2292AA97200E2D7D0 /* ResultView.swift in Sources */,
+				0CFAE7B0292AA95D00E2D7D0 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

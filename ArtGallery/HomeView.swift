@@ -13,15 +13,16 @@ class HomeView: UIView{
     let navigationView = UIView(frame: .zero)
     let homeStack = UIStackView(frame: .zero)
     let artistsButton = UIButton(frame: .zero)
-    let artworkButton = UIButton(frame: .zero)
+    let catButton = UIButton(frame: .zero)
     let searchCatStack = UIStackView(frame: .zero)
     let textField = UITextField(frame: .zero)
+    let navButton = UIButton(frame: .zero)
+
 
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         setupUI()
     }
   
@@ -32,6 +33,9 @@ class HomeView: UIView{
 }
 
 extension HomeView {
+//    @objc func navButtonFunc(sender:UIButton){
+//        //TODO:
+//    }
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
         homeStack.translatesAutoresizingMaskIntoConstraints = false
@@ -39,18 +43,21 @@ extension HomeView {
         searchWordView.translatesAutoresizingMaskIntoConstraints = false
         navigationView.translatesAutoresizingMaskIntoConstraints = false
         artistsButton.translatesAutoresizingMaskIntoConstraints = false
-        artworkButton.translatesAutoresizingMaskIntoConstraints = false
+        catButton.translatesAutoresizingMaskIntoConstraints = false
         searchCatStack.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
+        navButton.translatesAutoresizingMaskIntoConstraints = false
+        
         
         addSubview(homeStack)
         homeStack.addArrangedSubview(searchCatView)
         homeStack.addArrangedSubview(searchWordView)
         homeStack.addArrangedSubview(navigationView)
-        searchCatStack.addArrangedSubview(artworkButton)
+        searchCatStack.addArrangedSubview(catButton)
         searchCatStack.addArrangedSubview(artistsButton)
         searchCatView.addSubview(searchCatStack)
         searchWordView.addSubview(textField)
+        navigationView.addSubview(navButton)
 
         NSLayoutConstraint.activate([
             homeStack.topAnchor.constraint(equalTo: topAnchor),
@@ -67,7 +74,10 @@ extension HomeView {
             textField.topAnchor.constraint(equalToSystemSpacingBelow: searchWordView.topAnchor, multiplier: 5),
             textField.leadingAnchor.constraint(equalToSystemSpacingAfter: searchWordView.leadingAnchor, multiplier: 5),
             searchWordView.bottomAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 5),
-            searchWordView.trailingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 5)
+            searchWordView.trailingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 5),
+            
+            navButton.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor),
+            navButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
             
         ])
         
@@ -80,10 +90,10 @@ extension HomeView {
         homeStack.distribution = .fillEqually
         searchCatStack.distribution = .fillEqually
         artistsButton.setTitle("Artists", for: .normal)
-        artworkButton.setTitle("Artworks", for: .normal)
+        catButton.setTitle("Artworks", for: .normal)
         textField.backgroundColor = .white
-        
-  
+        navButton.setTitle("Get Results", for: .normal)
+       
         
     }
 }
