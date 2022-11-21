@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         homeViewController.homeView.navButton.addAction(UIAction(handler: { _ in
             self.window?.rootViewController = self.resultViewController
         }), for: .touchUpInside)
+        resultViewController.resultView.backButton.addAction(UIAction(handler: { _ in
+            self.window?.rootViewController = self.homeViewController
+        }), for: .touchUpInside)
         return true
     }
 }
