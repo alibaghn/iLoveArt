@@ -2,7 +2,7 @@
 import UIKit
 
 class ResultView: UIView {
-    let dailyImageView = UIView(frame: .zero)
+    let dailyImageView = UIImageView(frame: .zero)
     let backButton = UIButton()
  
     

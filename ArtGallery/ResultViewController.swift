@@ -7,13 +7,26 @@
 
 import UIKit
 
-
-
 class ResultViewController: UIViewController {
     let resultView = ResultView()
-    
+
+    func loadImage() async {
+        let url = URL(string: "https://www.artic.edu/iiif/2/1adf2696-8489-499b-cad2-821d7fde4b33/full/843,/0/default.jpg")!
+        do {
+            let urlRequest = URLRequest(url: url)
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            resultView.dailyImageView.image = UIImage(data: data)
+        } catch {
+            print(error)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        Task {
+//                    await ModelController.shared.fetchDailyImage()
+                    await loadImage()
+                }
         setupUI()
         
     }
