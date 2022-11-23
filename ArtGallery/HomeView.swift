@@ -12,7 +12,7 @@ class HomeView: UIView {
     let navigationView = UIView()
     let homeStack = UIStackView()
     let artistsButton = UIButton()
-    let catButton = UIButton()
+    let artButton = UIButton()
     let searchCatStack = UIStackView()
     let textField = UITextField()
     let navButton = UIButton()
@@ -39,7 +39,7 @@ extension HomeView {
         searchWordView.translatesAutoresizingMaskIntoConstraints = false
         navigationView.translatesAutoresizingMaskIntoConstraints = false
         artistsButton.translatesAutoresizingMaskIntoConstraints = false
-        catButton.translatesAutoresizingMaskIntoConstraints = false
+        artButton.translatesAutoresizingMaskIntoConstraints = false
         searchCatStack.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         navButton.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +48,7 @@ extension HomeView {
         homeStack.addArrangedSubview(searchCatView)
         homeStack.addArrangedSubview(searchWordView)
         homeStack.addArrangedSubview(navigationView)
-        searchCatStack.addArrangedSubview(catButton)
+        searchCatStack.addArrangedSubview(artButton)
         searchCatStack.addArrangedSubview(artistsButton)
         searchCatView.addSubview(searchCatStack)
         searchWordView.addSubview(textField)
@@ -84,7 +84,8 @@ extension HomeView {
         homeStack.distribution = .fillEqually
         searchCatStack.distribution = .fillEqually
         artistsButton.setTitle("Artists", for: .normal)
-        catButton.setTitle("Artworks", for: .normal)
+        artButton.setTitle("Artworks", for: .normal)
+        artButton.backgroundColor = .green
         textField.backgroundColor = .white
         navButton.setTitle("Get Results", for: .normal)
     }
