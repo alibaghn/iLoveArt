@@ -11,18 +11,27 @@ class ModelController {
     static let shared = ModelController()
     var searchCat: SearchCategory?
     var searchWord: String?
+    var imageId: String?
 
-    func fetchImages() async {
-        //            let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=\(apiKey)")!
-        //            let urlRequest = URLRequest(url: url)
-        //            do {
-        //                let (data, response) = try await URLSession.shared.data(for: urlRequest)
-        //                print("fetched data")
-        //                guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
-        //                let space = try JSONDecoder().decode(Museum.self, from: data)
-        //                dailyImageUrl = space.url
-        //            } catch {
-        //                print(error)
+    func fetchArts() async {
+        var url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=cats")!
+        var urlRequest = URLRequest(url: url)
+        do {
+            var (data, response) = try await URLSession.shared.data(for: urlRequest)
+            print("fetched data")
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
+            let arts = try JSONDecoder().decode(Arts.self, from: data)
+            print(arts.data[0])
+            let id = arts.data[0].id
+            url = URL(string: "https://api.artic.edu/api/v1/artworks/\(id)")!
+            urlRequest = URLRequest(url: url)
+            (data, response) = try await URLSession.shared.data(for: urlRequest)
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
+            let artImages = try JSONDecoder().decode(ArtImages.self, from: data)
+            imageId=artImages.data.image_id
+        } catch {
+            print(error)
+        }
     }
 }
 
