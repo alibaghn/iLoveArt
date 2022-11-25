@@ -8,6 +8,8 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+
+    
     let resultView = ResultView()
     let modelController = ModelController.shared
 
@@ -16,7 +18,7 @@ class ResultViewController: UIViewController {
         do {
             let urlRequest = URLRequest(url: url)
             let (data, _) = try await URLSession.shared.data(for: urlRequest)
-            resultView.dailyImageView.image = UIImage(data: data)
+//            resultView.dailyImageView.image = UIImage(data: data)
         } catch {
             print(error)
         }
@@ -24,11 +26,17 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        resultView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "customCell")
+        resultView.collectionView.dataSource = self
+        resultView.collectionView.delegate = self
         Task {
                     await ModelController.shared.fetchArts()
                     await loadImage()
                 }
+        
         setupUI()
+        
+        
         
     }
 }
@@ -43,5 +51,19 @@ extension ResultViewController {
             resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+}
+
+//MARK: - CollectionView Delegate
+
+extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath)
+                customCell.backgroundColor = UIColor.blue
+                return customCell
     }
 }

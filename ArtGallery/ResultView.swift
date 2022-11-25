@@ -2,15 +2,18 @@
 import UIKit
 
 class ResultView: UIView {
-    let dailyImageView = UIImageView(frame: .zero)
-    let backButton = UIButton()
+
+    var collectionView: UICollectionView!
+
  
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 60, height: 60)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         setupUI()
-        
+       
     }
     
     @available(*, unavailable)
@@ -22,25 +25,23 @@ class ResultView: UIView {
 extension ResultView {
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        dailyImageView.translatesAutoresizingMaskIntoConstraints = false
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setTitle("Back", for: .normal)
-        addSubview(dailyImageView)
-        addSubview(backButton)
-    
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+
+        
+        addSubview(collectionView)
+
         
         
         NSLayoutConstraint.activate([
-            dailyImageView.topAnchor.constraint(equalTo: topAnchor),
-            dailyImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            dailyImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            dailyImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            backButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            backButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
         
-        dailyImageView.backgroundColor = .red
+        collectionView.backgroundColor = .red
+
+        
         
     }
 }

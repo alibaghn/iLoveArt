@@ -75,6 +75,8 @@ extension HomeViewController {
             homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+        
+        
     }
 }
 
