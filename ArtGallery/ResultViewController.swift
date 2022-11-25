@@ -26,7 +26,7 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        resultView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "customCell")
+        resultView.collectionView.register(CustomCell.self, forCellWithReuseIdentifier: "customCell")
         resultView.collectionView.dataSource = self
         resultView.collectionView.delegate = self
         Task {
@@ -62,7 +62,7 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath)
+        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
                 customCell.backgroundColor = UIColor.blue
                 return customCell
     }

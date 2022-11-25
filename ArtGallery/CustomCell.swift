@@ -7,4 +7,33 @@
 
 import UIKit
 
-class CustomCell: UICollectionViewCell {}
+class CustomCell: UICollectionViewCell {
+    let imageView = UIImageView(frame: .zero)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupUI()
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension CustomCell {
+    func setupUI() {
+        translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(imageView)
+        NSLayoutConstraint.activate([
+           imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+           imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        
+        imageView.backgroundColor = .blue
+    }
+}
