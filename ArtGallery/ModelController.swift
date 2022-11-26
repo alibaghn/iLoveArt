@@ -10,13 +10,13 @@ import UIKit
 class ModelController {
     static let shared = ModelController()
     var searchCat: SearchCategory?
-    var searchWord: String?
+    var searchWord: String!
     var artIds: [Int] = []
     var imageIds: [String] = []
-    var images:[UIImage] = []
+    var images: [UIImage] = []
 
     func fetchArts() async {
-        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=cats")!
+        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&limit=40")!
         let urlRequest = URLRequest(url: url)
         do {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
@@ -26,7 +26,6 @@ class ModelController {
                 arts.data.map { artPieceData in
                     artPieceData.id
                 }
-           
 
         } catch {
             print(error)
@@ -40,25 +39,27 @@ class ModelController {
                 guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
                 let artImages = try JSONDecoder().decode(ArtImages.self, from: data)
                 imageIds.append(artImages.data.image_id)
-                
-            }
-            catch{
+            } catch {
                 print(error)
             }
         }
-//        print(imageIds)
+    }
 
-//        artIds.forEach { id in
-//            Task {
-//                let url = URL(string: "https://api.artic.edu/api/v1/artworks/\(id)")!
-//                let urlRequest = URLRequest(url: url)
-//                let (data, response) = try await URLSession.shared.data(for: urlRequest)
-//                guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
-//                let artImages = try JSONDecoder().decode(ArtImages.self, from: data)
-//                imageIds.append(artImages.data.image_id)
-//                print(imageIds)
-//            }
-//        }
+    func loadImage() async {
+        for id in imageIds {
+            let url = URL(string: "https://www.artic.edu/iiif/2/\(id)/full/843,/0/default.jpg")!
+            do {
+                let urlRequest = URLRequest(url: url)
+                let (data, response) = try await URLSession.shared.data(for: urlRequest)
+                guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
+                if let newImage = UIImage(data: data) {
+                    images.append(newImage)
+                }
+
+            } catch {
+                print("error: \(error)")
+            }
+        }
     }
 }
 

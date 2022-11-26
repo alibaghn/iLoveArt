@@ -12,38 +12,16 @@ class ResultViewController: UIViewController {
     let resultView = ResultView()
     let modelController = ModelController.shared
 
-    func loadImage() async {
-        print(modelController.imageIds.count)
-        for id in modelController.imageIds {
-            let url = URL(string: "https://www.artic.edu/iiif/2/\(id)/full/843,/0/default.jpg")!
-            do {
-                let urlRequest = URLRequest(url: url)
-                let (data, response) = try await URLSession.shared.data(for: urlRequest)
-                guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
-                if let newImage = UIImage(data: data) {
-                    modelController.images.append(newImage)
-                }
-                
-            } catch {
-                print("error: \(error)")
-            }
-        }
-        print(modelController.images)
-        
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         Task {
-            await ModelController.shared.fetchArts()
-            await loadImage()
+            await modelController.fetchArts()
+            await modelController.loadImage()
             resultView.collectionView.dataSource = self
             resultView.collectionView.delegate = self
             resultView.collectionView.register(CustomCellView.self, forCellWithReuseIdentifier: "customCell")
         }
-
-        
     }
 }
 

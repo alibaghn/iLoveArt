@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = homeViewController
         homeViewController.homeView.navButton.addAction(UIAction(handler: { [self] _ in
             modelController.searchCat = self.homeViewController.searchCategory
-            modelController.searchWord = self.homeViewController.homeView.textField.text
+            guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else {return}
+            modelController.searchWord = userWord
             print(modelController.searchCat!)
             print(modelController.searchWord!)
             self.window?.rootViewController = resultViewController
