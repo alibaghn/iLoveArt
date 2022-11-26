@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCell: UICollectionViewCell {
+class CustomCellView: UICollectionViewCell {
     let imageView = UIImageView(frame: .zero)
     
     override init(frame: CGRect) {
@@ -22,18 +22,24 @@ class CustomCell: UICollectionViewCell {
     }
 }
 
-extension CustomCell {
+extension CustomCellView {
     func setupUI() {
-        translatesAutoresizingMaskIntoConstraints = false
+//        translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
+        
         NSLayoutConstraint.activate([
            imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+           
+           
+           
+           
         ])
         
-        imageView.backgroundColor = .blue
+        imageView.contentMode = .scaleToFill
+        
     }
 }

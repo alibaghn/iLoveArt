@@ -8,35 +8,41 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
-    
+    let customCellView = CustomCellView()
     let resultView = ResultView()
     let modelController = ModelController.shared
 
     func loadImage() async {
-        let url = URL(string: "https://www.artic.edu/iiif/2/\(modelController.imageId!)/full/843,/0/default.jpg")!
-        do {
-            let urlRequest = URLRequest(url: url)
-            let (data, _) = try await URLSession.shared.data(for: urlRequest)
-//            resultView.dailyImageView.image = UIImage(data: data)
-        } catch {
-            print(error)
+        print(modelController.imageIds.count)
+        for id in modelController.imageIds {
+            let url = URL(string: "https://www.artic.edu/iiif/2/\(id)/full/843,/0/default.jpg")!
+            do {
+                let urlRequest = URLRequest(url: url)
+                let (data, response) = try await URLSession.shared.data(for: urlRequest)
+                guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
+                if let newImage = UIImage(data: data) {
+                    modelController.images.append(newImage)
+                }
+                
+            } catch {
+                print("error: \(error)")
+            }
         }
+        print(modelController.images)
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        resultView.collectionView.register(CustomCell.self, forCellWithReuseIdentifier: "customCell")
-        resultView.collectionView.dataSource = self
-        resultView.collectionView.delegate = self
-        Task {
-                    await ModelController.shared.fetchArts()
-                    await loadImage()
-                }
-        
         setupUI()
-        
-        
+        Task {
+            await ModelController.shared.fetchArts()
+            await loadImage()
+            resultView.collectionView.dataSource = self
+            resultView.collectionView.delegate = self
+            resultView.collectionView.register(CustomCellView.self, forCellWithReuseIdentifier: "customCell")
+        }
+
         
     }
 }
@@ -54,16 +60,18 @@ extension ResultViewController {
     }
 }
 
-//MARK: - CollectionView Delegate
+// MARK: - CollectionView Delegate
 
 extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        print(modelController.imageIds.count)
+        return modelController.imageIds.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
-                customCell.backgroundColor = UIColor.blue
-                return customCell
+        let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCellView
+        customCell.backgroundColor = UIColor.blue
+        customCell.imageView.image = modelController.images[indexPath.row]
+        return customCell
     }
 }

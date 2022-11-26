@@ -10,9 +10,10 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    let resultViewController = ResultViewController()
+    
     let homeViewController = HomeViewController()
-    let modelController = ModelController()
+    let modelController = ModelController.shared
+    let resultViewController = ResultViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -24,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             modelController.searchWord = self.homeViewController.homeView.textField.text
             print(modelController.searchCat!)
             print(modelController.searchWord!)
-            self.window?.rootViewController = self.resultViewController
+            self.window?.rootViewController = resultViewController
         }), for: .touchUpInside)
 
 //        resultViewController.resultView.backButton.addAction(UIAction(handler: { _ in
