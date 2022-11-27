@@ -66,7 +66,7 @@ extension HomeViewController {
 //    }
 
     func setupUI() {
-        view.translatesAutoresizingMaskIntoConstraints = false
+   
         view.addSubview(homeView)
 
         NSLayoutConstraint.activate([

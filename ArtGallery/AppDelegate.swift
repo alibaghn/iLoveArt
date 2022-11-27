@@ -16,17 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let resultViewController = ResultViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let navigationController = UINavigationController(rootViewController: homeViewController)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = homeViewController
+        window?.rootViewController = navigationController
         homeViewController.homeView.navButton.addAction(UIAction(handler: { [self] _ in
             modelController.searchCat = self.homeViewController.searchCategory
             guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else {return}
             modelController.searchWord = userWord
             print(modelController.searchCat!)
             print(modelController.searchWord!)
-            self.window?.rootViewController = resultViewController
+            navigationController.pushViewController(resultViewController, animated: true)
         }), for: .touchUpInside)
 
 //        resultViewController.resultView.backButton.addAction(UIAction(handler: { _ in

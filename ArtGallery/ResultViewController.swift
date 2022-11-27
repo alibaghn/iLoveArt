@@ -27,7 +27,7 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController {
     func setupUI() {
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        
         view.addSubview(resultView)
         NSLayoutConstraint.activate([
             resultView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -35,6 +35,8 @@ extension ResultViewController {
             resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+        
+//        resultView.collectionView.isUserInteractionEnabled = true
     }
 }
 
@@ -51,5 +53,11 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
         customCell.backgroundColor = UIColor.blue
         customCell.imageView.image = modelController.images[indexPath.row]
         return customCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        navigationController?.pushViewController(DetailViewController(), animated: true)
+        
     }
 }
