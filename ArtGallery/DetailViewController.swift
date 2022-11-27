@@ -9,6 +9,19 @@ import UIKit
 
 class DetailViewController: UIViewController {
     let detailView = DetailView()
+    let image : UIImage
+    
+    init(image: UIImage) {
+        self.image = image
+        detailView.imageView.image = image
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

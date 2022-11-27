@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailView: UIView {
-    let dailyImageView = UIView(frame: .zero)
+    let imageView = UIImageView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,15 +25,16 @@ class DetailView: UIView {
 extension DetailView {
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        dailyImageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(dailyImageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(imageView)
         NSLayoutConstraint.activate([
-            dailyImageView.topAnchor.constraint(equalTo: topAnchor),
-            dailyImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            dailyImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            dailyImageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
-        dailyImageView.backgroundColor = .red
+        imageView.backgroundColor = .red
+        imageView.contentMode = .scaleToFill
     }
 }

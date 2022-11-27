@@ -27,7 +27,6 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController {
     func setupUI() {
-//        
         view.addSubview(resultView)
         NSLayoutConstraint.activate([
             resultView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -57,7 +56,7 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        navigationController?.pushViewController(DetailViewController(), animated: true)
+        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row]), animated: true)
         
     }
 }
