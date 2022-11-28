@@ -14,8 +14,8 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         Task {
+            setupUI()
             await modelController.fetchArts()
             await modelController.loadImage()
             resultView.collectionView.dataSource = self
@@ -23,6 +23,8 @@ class ResultViewController: UIViewController {
             resultView.collectionView.register(CustomCellView.self, forCellWithReuseIdentifier: "customCell")
         }
     }
+
+    
 }
 
 extension ResultViewController {
@@ -34,8 +36,8 @@ extension ResultViewController {
             resultView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        
-//        resultView.collectionView.isUserInteractionEnabled = true
+
+
     }
 }
 
@@ -53,10 +55,9 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
         customCell.imageView.image = modelController.images[indexPath.row]
         return customCell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
         navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row]), animated: true)
-        
     }
 }

@@ -10,24 +10,25 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
+
     let homeViewController = HomeViewController()
     let modelController = ModelController.shared
     let resultViewController = ResultViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navigationController = UINavigationController(rootViewController: homeViewController)
+//
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = navigationController
+        window?.rootViewController = homeViewController
         homeViewController.homeView.navButton.addAction(UIAction(handler: { [self] _ in
             modelController.searchCat = self.homeViewController.searchCategory
-            guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else {return}
+            guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else { return }
             modelController.searchWord = userWord
             print(modelController.searchCat!)
             print(modelController.searchWord!)
-            navigationController.pushViewController(resultViewController, animated: true)
+            let navigationController = UINavigationController(rootViewController: resultViewController)
+            window?.rootViewController = navigationController
         }), for: .touchUpInside)
 
 //        resultViewController.resultView.backButton.addAction(UIAction(handler: { _ in
@@ -36,3 +37,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
+
+// TODO: remove space in user search word.
