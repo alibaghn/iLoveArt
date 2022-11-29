@@ -58,6 +58,6 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row]), animated: true)
+        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row]), animated: false)
     }
 }

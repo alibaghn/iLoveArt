@@ -11,9 +11,6 @@ class HomeView: UIView {
     let searchWordView = UIView()
     let navigationView = UIView()
     let homeStack = UIStackView()
-    let artistsButton = UIButton()
-    let artButton = UIButton()
-    let searchCatStack = UIStackView()
     let textField = UITextField()
     let navButton = UIButton()
 
@@ -38,9 +35,6 @@ extension HomeView {
         searchCatView.translatesAutoresizingMaskIntoConstraints = false
         searchWordView.translatesAutoresizingMaskIntoConstraints = false
         navigationView.translatesAutoresizingMaskIntoConstraints = false
-        artistsButton.translatesAutoresizingMaskIntoConstraints = false
-        artButton.translatesAutoresizingMaskIntoConstraints = false
-        searchCatStack.translatesAutoresizingMaskIntoConstraints = false
         textField.translatesAutoresizingMaskIntoConstraints = false
         navButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,9 +42,7 @@ extension HomeView {
         homeStack.addArrangedSubview(searchCatView)
         homeStack.addArrangedSubview(searchWordView)
         homeStack.addArrangedSubview(navigationView)
-        searchCatStack.addArrangedSubview(artButton)
-        searchCatStack.addArrangedSubview(artistsButton)
-        searchCatView.addSubview(searchCatStack)
+   
         searchWordView.addSubview(textField)
         navigationView.addSubview(navButton)
 
@@ -59,9 +51,6 @@ extension HomeView {
             homeStack.bottomAnchor.constraint(equalTo: bottomAnchor),
             homeStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             homeStack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            searchCatStack.centerXAnchor.constraint(equalTo: searchCatView.centerXAnchor),
-            searchCatStack.centerYAnchor.constraint(equalTo: searchCatView.centerYAnchor),
             
             textField.centerXAnchor.constraint(equalTo: searchWordView.centerXAnchor),
             textField.centerYAnchor.constraint(equalTo: searchWordView.centerYAnchor),
@@ -80,12 +69,7 @@ extension HomeView {
         searchWordView.backgroundColor = .yellow
         navigationView.backgroundColor = .orange
         homeStack.axis = .vertical
-        searchCatStack.axis = .horizontal
         homeStack.distribution = .fillEqually
-        searchCatStack.distribution = .fillEqually
-        artistsButton.setTitle("Artists", for: .normal)
-        artButton.setTitle("Artworks", for: .normal)
-        artButton.backgroundColor = .green
         textField.backgroundColor = .white
         navButton.setTitle("Get Results", for: .normal)
     }

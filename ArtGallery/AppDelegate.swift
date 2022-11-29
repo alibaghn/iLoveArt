@@ -22,10 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .systemBackground
         window?.rootViewController = homeViewController
         homeViewController.homeView.navButton.addAction(UIAction(handler: { [self] _ in
-            modelController.searchCat = self.homeViewController.searchCategory
+    
             guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else { return }
             modelController.searchWord = userWord
-            print(modelController.searchCat!)
             print(modelController.searchWord!)
             let navigationController = UINavigationController(rootViewController: resultViewController)
             window?.rootViewController = navigationController

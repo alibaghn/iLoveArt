@@ -7,9 +7,8 @@
 
 import Foundation
 
-enum SearchCategory {
-    case Artist, Artworks
-}
+
+
 
 struct Arts: Codable {
     let data: [ArtPieceData]

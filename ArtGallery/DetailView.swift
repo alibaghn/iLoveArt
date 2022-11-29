@@ -8,7 +8,10 @@
 import UIKit
 
 class DetailView: UIView {
+    let stackView = UIStackView()
     let imageView = UIImageView(frame: .zero)
+    let textView = UIView(frame: .zero)
+    let label = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,7 +19,7 @@ class DetailView: UIView {
         setupUI()
     }
     
-    
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -25,16 +28,36 @@ class DetailView: UIView {
 extension DetailView {
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(stackView)
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(textView)
+        textView.addSubview(label)
+        
+        
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+//            label.topAnchor.constraint(equalTo: textView.topAnchor),
+//            label.bottomAnchor.constraint(equalTo: textView.bottomAnchor),
+//            label.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
+//            label.trailingAnchor.constraint(equalTo: textView.trailingAnchor),
+//            
+//            label.centerXAnchor.constraint(equalTo: textView.centerXAnchor),
+//            label.centerYAnchor.constraint(equalTo: textView.centerYAnchor)
         ])
         
-        imageView.backgroundColor = .red
+
         imageView.contentMode = .scaleToFill
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        label.text = "This is a test"
     }
 }

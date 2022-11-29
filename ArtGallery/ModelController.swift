@@ -9,14 +9,13 @@ import UIKit
 
 class ModelController {
     static let shared = ModelController()
-    var searchCat: SearchCategory?
     var searchWord: String!
     var artIds: [Int] = []
     var imageIds: [String] = []
     var images: [UIImage] = []
 
     func fetchArts() async {
-        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&limit=5")!
+        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&limit=2")!
         let urlRequest = URLRequest(url: url)
         do {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
@@ -61,6 +60,8 @@ class ModelController {
             }
         }
     }
+    
+    
 }
 
 //    var didImageUpdate: (() -> Void)?

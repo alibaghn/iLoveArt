@@ -9,22 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     let homeView = HomeView()
-    var searchCategory = SearchCategory.Artworks
 
-    @IBAction func setSearchCat(sender: UIButton) {
-        homeView.artistsButton.backgroundColor = .white
-        homeView.artButton.backgroundColor = .white
-        switch sender {
-        case homeView.artButton:
-            searchCategory = .Artworks
-            homeView.artButton.backgroundColor = .green
-        case homeView.artistsButton:
-            searchCategory = .Artist
-            homeView.artistsButton.backgroundColor = .green
-        default:
-            break
-        }
-    }
+
+
 
 //    func loadImage() async {
 //        let url = URL(string: modelController.dailyImageUrl!)!
@@ -43,13 +30,8 @@ class HomeViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
         setupUI()
-        homeView.artButton.addAction(UIAction(handler: { _ in
-            self.setSearchCat(sender: self.homeView.artButton)
-        }), for: .touchUpInside)
+       
         
-        homeView.artistsButton.addAction(UIAction(handler: { _ in
-            self.setSearchCat(sender: self.homeView.artistsButton)
-        }), for: .touchUpInside)
         
 //        Task {
 //            await ModelController.shared.fetchDailyImage()
