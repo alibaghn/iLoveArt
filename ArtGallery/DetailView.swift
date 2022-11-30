@@ -58,6 +58,7 @@ extension DetailView {
         imageView.contentMode = .scaleToFill
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
+        label.numberOfLines = 3
         
     }
 }

@@ -11,6 +11,11 @@ class ResultViewController: UIViewController {
     let customCellView = CustomCellView()
     let resultView = ResultView()
     let modelController = ModelController.shared
+    
+    @objc func backButtonPressed() {
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        
+        }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +30,6 @@ class ResultViewController: UIViewController {
             resultView.spinner.stopAnimating()
         }
     }
-
-    
 }
 
 extension ResultViewController {
@@ -39,7 +42,8 @@ extension ResultViewController {
             resultView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
 
-
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: resultView.backButton)
+        resultView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
     }
 }
 
@@ -60,6 +64,6 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row],text: modelController.imageData[indexPath.row].title), animated: true)
+        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row], text: modelController.imageData[indexPath.row].title), animated: true)
     }
 }
