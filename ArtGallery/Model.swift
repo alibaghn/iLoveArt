@@ -24,4 +24,5 @@ struct ArtImages:Codable {
 
 struct ArtImageData:Codable {
     let image_id: String
+    let title: String
 }

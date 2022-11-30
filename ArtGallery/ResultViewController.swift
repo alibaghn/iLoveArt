@@ -17,7 +17,7 @@ class ResultViewController: UIViewController {
         Task {
             setupUI()
             await modelController.fetchArts()
-            await modelController.loadImage()
+            await modelController.loadImages()
             resultView.collectionView.dataSource = self
             resultView.collectionView.delegate = self
             resultView.collectionView.register(CustomCellView.self, forCellWithReuseIdentifier: "customCell")
@@ -45,8 +45,8 @@ extension ResultViewController {
 
 extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(modelController.imageIds.count)
-        return modelController.imageIds.count
+        print(modelController.imageData.count)
+        return modelController.imageData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,6 +58,6 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row]), animated: false)
+        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row],text: modelController.imageData[indexPath.row].title), animated: true)
     }
 }

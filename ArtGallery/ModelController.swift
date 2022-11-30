@@ -11,7 +11,7 @@ class ModelController {
     static let shared = ModelController()
     var searchWord: String!
     var artIds: [Int] = []
-    var imageIds: [String] = []
+    var imageData: [ArtImageData] = []
     var images: [UIImage] = []
 
     func fetchArts() async {
@@ -37,16 +37,17 @@ class ModelController {
                 let (data, response) = try await URLSession.shared.data(for: urlRequest)
                 guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
                 let artImages = try JSONDecoder().decode(ArtImages.self, from: data)
-                imageIds.append(artImages.data.image_id)
+                imageData.append(artImages.data)
             } catch {
                 print(error)
             }
         }
     }
 
-    func loadImage() async {
-        for id in imageIds {
-            let url = URL(string: "https://www.artic.edu/iiif/2/\(id)/full/843,/0/default.jpg")!
+    func loadImages() async {
+            
+        for item in imageData {
+            let url = URL(string: "https://www.artic.edu/iiif/2/\(item.image_id)/full/843,/0/default.jpg")!
             do {
                 let urlRequest = URLRequest(url: url)
                 let (data, response) = try await URLSession.shared.data(for: urlRequest)

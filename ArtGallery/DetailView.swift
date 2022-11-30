@@ -45,19 +45,19 @@ extension DetailView {
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-//            label.topAnchor.constraint(equalTo: textView.topAnchor),
-//            label.bottomAnchor.constraint(equalTo: textView.bottomAnchor),
-//            label.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
-//            label.trailingAnchor.constraint(equalTo: textView.trailingAnchor),
-//            
-//            label.centerXAnchor.constraint(equalTo: textView.centerXAnchor),
-//            label.centerYAnchor.constraint(equalTo: textView.centerYAnchor)
+            label.topAnchor.constraint(equalTo: textView.topAnchor),
+            label.bottomAnchor.constraint(equalTo: textView.bottomAnchor),
+            label.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: textView.trailingAnchor),
+            
+            label.centerXAnchor.constraint(equalTo: textView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: textView.centerYAnchor)
         ])
         
 
         imageView.contentMode = .scaleToFill
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        label.text = "This is a test"
+        
     }
 }

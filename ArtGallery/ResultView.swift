@@ -39,7 +39,7 @@ extension ResultView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
         
-        collectionView.backgroundColor = .red
+        
 
         
         
