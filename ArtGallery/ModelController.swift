@@ -15,7 +15,7 @@ class ModelController {
     var images: [UIImage] = []
 
     func fetchArts() async {
-        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&limit=2")!
+        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&limit=20")!
         let urlRequest = URLRequest(url: url)
         do {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
@@ -65,15 +65,4 @@ class ModelController {
     
 }
 
-//    var didImageUpdate: (() -> Void)?
-//    var dailyImageUrl: String?
-//    {
-//        didSet {
-//            didImageUpdate?()
-//        }
-//    }
 
-//    let apiKey = "zjxgMLdpTCYXhyU1iyd6U8evISSSM1YTacmOGUgU"
-//
-//
-//    }

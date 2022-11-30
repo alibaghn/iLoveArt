@@ -13,16 +13,7 @@ class HomeViewController: UIViewController {
 
 
 
-//    func loadImage() async {
-//        let url = URL(string: modelController.dailyImageUrl!)!
-//        do {
-//            let urlRequest = URLRequest(url: url)
-//            let (data, _) = try await URLSession.shared.data(for: urlRequest)
-//            homeView.dailyImageView.image = UIImage(data: data)
-//        } catch {
-//            print(error)
-//        }
-//    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,20 +23,11 @@ class HomeViewController: UIViewController {
         setupUI()
        
         
-        
-//        Task {
-//            await ModelController.shared.fetchDailyImage()
-//            await loadImage()
-//        }
+
     }
 }
 
 extension HomeViewController {
-//    @objc func navButtonFunc(sender: UIButton) {
-//
-//        view.window?.rootViewController = ResultViewController()
-//
-//    }
 
     func setupUI() {
    

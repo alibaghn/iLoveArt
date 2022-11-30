@@ -16,11 +16,13 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         Task {
             setupUI()
+            resultView.spinner.startAnimating()
             await modelController.fetchArts()
             await modelController.loadImages()
             resultView.collectionView.dataSource = self
             resultView.collectionView.delegate = self
             resultView.collectionView.register(CustomCellView.self, forCellWithReuseIdentifier: "customCell")
+            resultView.spinner.stopAnimating()
         }
     }
 

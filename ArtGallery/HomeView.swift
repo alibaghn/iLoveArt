@@ -26,9 +26,7 @@ class HomeView: UIView {
 }
 
 extension HomeView {
-//    @objc func navButtonFunc(sender:UIButton){
-//        //TODO:
-//    }
+
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
         homeStack.translatesAutoresizingMaskIntoConstraints = false
