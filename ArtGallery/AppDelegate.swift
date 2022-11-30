@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let homeViewController = HomeViewController()
     let modelController = ModelController.shared
-    let resultViewController = ResultViewController()
+    var resultViewController = ResultViewController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //
@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .systemBackground
         window?.rootViewController = homeViewController
         homeViewController.homeView.navButton.addAction(UIAction(handler: { [self] _ in
-    
             guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else { return }
             modelController.searchWord = userWord
             print(modelController.searchWord!)

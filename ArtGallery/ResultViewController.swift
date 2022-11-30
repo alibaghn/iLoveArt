@@ -11,14 +11,19 @@ class ResultViewController: UIViewController {
     let customCellView = CustomCellView()
     let resultView = ResultView()
     let modelController = ModelController.shared
-    
+
     @objc func backButtonPressed() {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-        
-        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = appDelegate.homeViewController
+        appDelegate.resultViewController = ResultViewController()
+        modelController.reset()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         Task {
             setupUI()
             resultView.spinner.startAnimating()
@@ -43,7 +48,7 @@ extension ResultViewController {
         ])
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: resultView.backButton)
-        resultView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
+        resultView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
     }
 }
 
