@@ -7,12 +7,12 @@
 import UIKit
 
 class HomeView: UIView {
-    let searchCatView = UIView()
-    let searchWordView = UIView()
-    let navigationView = UIView()
-    let homeStack = UIStackView()
+    
+    let imageView = UIImageView(image: UIImage(named: "logo"))
+    let hStack = UIStackView()
     let textField = UITextField()
-    let navButton = UIButton()
+    let searchButton = UIButton()
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,46 +29,55 @@ extension HomeView {
 
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        homeStack.translatesAutoresizingMaskIntoConstraints = false
-        searchCatView.translatesAutoresizingMaskIntoConstraints = false
-        searchWordView.translatesAutoresizingMaskIntoConstraints = false
-        navigationView.translatesAutoresizingMaskIntoConstraints = false
+        hStack.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+ 
+
+
         textField.translatesAutoresizingMaskIntoConstraints = false
-        navButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(homeStack)
-        homeStack.addArrangedSubview(searchCatView)
-        homeStack.addArrangedSubview(searchWordView)
-        homeStack.addArrangedSubview(navigationView)
+        addSubview(imageView)
+        addSubview(hStack)
+
+        hStack.addArrangedSubview(textField)
+        hStack.addArrangedSubview(searchButton)
    
-        searchWordView.addSubview(textField)
-        navigationView.addSubview(navButton)
 
         NSLayoutConstraint.activate([
-            homeStack.topAnchor.constraint(equalTo: topAnchor),
-            homeStack.bottomAnchor.constraint(equalTo: bottomAnchor),
-            homeStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            homeStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            textField.centerXAnchor.constraint(equalTo: searchWordView.centerXAnchor),
-            textField.centerYAnchor.constraint(equalTo: searchWordView.centerYAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            textField.topAnchor.constraint(equalToSystemSpacingBelow: searchWordView.topAnchor, multiplier: 5),
-            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: searchWordView.leadingAnchor, multiplier: 5),
-            searchWordView.bottomAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 5),
-            searchWordView.trailingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 5),
             
-            navButton.centerXAnchor.constraint(equalTo: navigationView.centerXAnchor),
-            navButton.centerYAnchor.constraint(equalTo: navigationView.centerYAnchor)
+            
+            hStack.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1),
+            hStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: hStack.trailingAnchor, multiplier: 1),
+            
+            hStack.heightAnchor.constraint(equalToConstant: 50),
+            
+            searchButton.widthAnchor.constraint(equalTo: hStack.heightAnchor)
+            
+            
+            
+            
             
         ])
         
-        searchCatView.backgroundColor = .red
-        searchWordView.backgroundColor = .yellow
-        navigationView.backgroundColor = .orange
-        homeStack.axis = .vertical
-        homeStack.distribution = .fillEqually
+
+
+        hStack.axis = .horizontal
         textField.backgroundColor = .white
-        navButton.setTitle("Get Results", for: .normal)
+        textField.layer.cornerRadius = 15.0
+        textField.layer.borderWidth = 2.0
+        textField.layer.borderColor = UIColor.red.cgColor
+        searchButton.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
+        searchButton.contentHorizontalAlignment = .fill
+        searchButton.contentVerticalAlignment = .fill
+       
+        
     }
 }

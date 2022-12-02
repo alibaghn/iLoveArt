@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
         window?.rootViewController = homeViewController
-        homeViewController.homeView.navButton.addAction(UIAction(handler: { [self] _ in
+        homeViewController.homeView.searchButton.addAction(UIAction(handler: { [self] _ in
             guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else { return }
             modelController.searchWord = userWord
             print(modelController.searchWord!)
