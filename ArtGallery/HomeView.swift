@@ -7,12 +7,10 @@
 import UIKit
 
 class HomeView: UIView {
-    
     let imageView = UIImageView(image: UIImage(named: "logo"))
     let hStack = UIStackView()
     let textField = UITextField()
     let searchButton = UIButton()
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,14 +24,11 @@ class HomeView: UIView {
 }
 
 extension HomeView {
-
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
         hStack.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
  
-
-
         textField.translatesAutoresizingMaskIntoConstraints = false
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -43,15 +38,11 @@ extension HomeView {
         hStack.addArrangedSubview(textField)
         hStack.addArrangedSubview(searchButton)
    
-
         NSLayoutConstraint.activate([
-            
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            
             
             hStack.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1),
             hStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
@@ -61,14 +52,8 @@ extension HomeView {
             
             searchButton.widthAnchor.constraint(equalTo: hStack.heightAnchor)
             
-            
-            
-            
-            
         ])
         
-
-
         hStack.axis = .horizontal
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 15.0
@@ -80,6 +65,6 @@ extension HomeView {
         searchButton.tintColor = .white
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
-        
+        textField.placeholder = "Search Art Metadata or Artist"
     }
 }

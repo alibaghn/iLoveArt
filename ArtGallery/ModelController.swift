@@ -23,7 +23,7 @@ class ModelController {
     
 
     func fetchArts() async {
-        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&limit=5")!
+        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&fields=id&limit=30")!
         let urlRequest = URLRequest(url: url)
         do {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
@@ -40,7 +40,7 @@ class ModelController {
 
         for id in artIds {
             do {
-                let url = URL(string: "https://api.artic.edu/api/v1/artworks/\(id)")!
+                let url = URL(string: "https://api.artic.edu/api/v1/artworks/\(id)?fields=title,artist_display,date_display,style_title,image_id")!
                 let urlRequest = URLRequest(url: url)
                 let (data, response) = try await URLSession.shared.data(for: urlRequest)
                 guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }

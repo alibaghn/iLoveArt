@@ -24,16 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         homeViewController.homeView.searchButton.addAction(UIAction(handler: { [self] _ in
             guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else { return }
             modelController.searchWord = String(userWord.filter { !$0.isWhitespace })
-            print(modelController.searchWord!)
+        
             let navigationController = UINavigationController(rootViewController: resultViewController)
             window?.rootViewController = navigationController
         }), for: .touchUpInside)
 
-//        resultViewController.resultView.backButton.addAction(UIAction(handler: { _ in
-//            self.window?.rootViewController = self.homeViewController
-//        }), for: .touchUpInside)
+
         return true
     }
 }
 
-// TODO: remove space in user search word.
+

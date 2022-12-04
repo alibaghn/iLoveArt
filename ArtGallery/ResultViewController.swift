@@ -21,6 +21,7 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +57,6 @@ extension ResultViewController {
 
 extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(modelController.imageData.count)
         return modelController.imageData.count
     }
 
@@ -68,7 +68,6 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(modelController.artIds)
         navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row], imageTitle: modelController.imageData[indexPath.row].title, artist: modelController.imageData[indexPath.row].artist_display, date: modelController.imageData[indexPath.row].date_display, style: modelController.imageData[indexPath.row].style_title), animated: true)
     }
 }

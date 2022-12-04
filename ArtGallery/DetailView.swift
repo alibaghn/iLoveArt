@@ -56,16 +56,8 @@ extension DetailView {
             vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-//            textView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 1),
-//            textView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
-//            textView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor),
-//            textView.bottomAnchor.constraint(equalTo: vStack.bottomAnchor),
-//
-//
-//            textViewStack.topAnchor.constraint(equalToSystemSpacingBelow: textView.topAnchor, multiplier: 1),
             textViewStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
             titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: textView.topAnchor, multiplier: 1),
-//            bottomAnchor.constraint(equalToSystemSpacingBelow: textViewStack.bottomAnchor, multiplier: 1),
             textViewStack.trailingAnchor.constraint(equalToSystemSpacingAfter: trailingAnchor, multiplier: 1)
         ])
         
@@ -75,5 +67,6 @@ extension DetailView {
         textViewStack.spacing = 10
         vStack.distribution = .fillEqually
         artistLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 2
     }
 }
