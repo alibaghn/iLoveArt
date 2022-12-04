@@ -24,5 +24,5 @@ struct ArtImageData: Codable {
     let title: String
     let artist_display: String
     let date_display: String
-    let style_title: String
+    let style_title: String!
 }

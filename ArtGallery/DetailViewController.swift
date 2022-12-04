@@ -13,9 +13,9 @@ class DetailViewController: UIViewController {
     let imageTitle: String
     let artist: String
     let date: String
-    let style: String
+    let style: String?
 
-    init(image: UIImage, imageTitle: String, artist: String, date: String, style: String) {
+    init(image: UIImage, imageTitle: String, artist: String, date: String, style: String?) {
         self.image = image
         self.imageTitle = imageTitle
         self.artist = artist
@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
         self.style = date
         detailView.imageView.image = image
         detailView.titleLabel.text = "Title: \(imageTitle)"
-        detailView.styleLabel.text = "Style: \(style)"
+        detailView.styleLabel.text = "Style: \(style ?? "Unknown")"
         detailView.artistLabel.text = "Artist: \(artist)".filter { !$0.isNewline
         }
         detailView.dateLabel.text = "Date Created: \(date)"
