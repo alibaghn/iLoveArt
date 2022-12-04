@@ -8,10 +8,14 @@
 import UIKit
 
 class DetailView: UIView {
-    let stackView = UIStackView()
+    let vStack = UIStackView()
     let imageView = UIImageView(frame: .zero)
     let textView = UIView(frame: .zero)
-    let label = UILabel(frame: .zero)
+    let textViewStack = UIStackView()
+    let titleLabel = UILabel(frame: .zero)
+    let styleLabel = UILabel(frame: .zero)
+    let artistLabel = UILabel(frame: .zero)
+    let dateLabel = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,38 +32,48 @@ class DetailView: UIView {
 extension DetailView {
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        vStack.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         textView.translatesAutoresizingMaskIntoConstraints = false
-        label.translatesAutoresizingMaskIntoConstraints = false
+        textViewStack.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        artistLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        styleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(stackView)
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(textView)
-        textView.addSubview(label)
-        
+        addSubview(vStack)
+        vStack.addArrangedSubview(imageView)
+        vStack.addArrangedSubview(textView)
+        textView.addSubview(textViewStack)
+        textViewStack.addArrangedSubview(titleLabel)
+        textViewStack.addArrangedSubview(styleLabel)
+        textViewStack.addArrangedSubview(artistLabel)
+        textViewStack.addArrangedSubview(dateLabel)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            vStack.topAnchor.constraint(equalTo: topAnchor),
+            vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            label.topAnchor.constraint(equalTo: textView.topAnchor),
-            label.bottomAnchor.constraint(equalTo: textView.bottomAnchor),
-            label.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: textView.trailingAnchor),
-            
-            label.centerXAnchor.constraint(equalTo: textView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: textView.centerYAnchor)
+//            textView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 1),
+//            textView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor),
+//            textView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor),
+//            textView.bottomAnchor.constraint(equalTo: vStack.bottomAnchor),
+//
+//
+//            textViewStack.topAnchor.constraint(equalToSystemSpacingBelow: textView.topAnchor, multiplier: 1),
+            textViewStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+            titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: textView.topAnchor, multiplier: 1),
+//            bottomAnchor.constraint(equalToSystemSpacingBelow: textViewStack.bottomAnchor, multiplier: 1),
+            textViewStack.trailingAnchor.constraint(equalToSystemSpacingAfter: trailingAnchor, multiplier: 1)
         ])
         
-
         imageView.contentMode = .scaleToFill
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        label.numberOfLines = 3
-        imageView.layer.cornerRadius = 8.0
-        imageView.clipsToBounds = true
+        vStack.axis = .vertical
+        textViewStack.axis = .vertical
+        textViewStack.spacing = 10
+        vStack.distribution = .fillEqually
+        artistLabel.numberOfLines = 2
     }
 }

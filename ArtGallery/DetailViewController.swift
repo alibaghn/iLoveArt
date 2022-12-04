@@ -10,14 +10,23 @@ import UIKit
 class DetailViewController: UIViewController {
     let detailView = DetailView()
     let image: UIImage
-    let text: String
-    
+    let imageTitle: String
+    let artist: String
+    let date: String
+    let style: String
 
-    init(image: UIImage, text: String) {
+    init(image: UIImage, imageTitle: String, artist: String, date: String, style: String) {
         self.image = image
-        self.text = text
+        self.imageTitle = imageTitle
+        self.artist = artist
+        self.date = date
+        self.style = date
         detailView.imageView.image = image
-        detailView.label.text = text
+        detailView.titleLabel.text = "Title: \(imageTitle)"
+        detailView.styleLabel.text = "Style: \(style)"
+        detailView.artistLabel.text = "Artist: \(artist)".filter { !$0.isNewline
+        }
+        detailView.dateLabel.text = "Date Created: \(date)"
         super.init(nibName: nil, bundle: nil)
     }
 

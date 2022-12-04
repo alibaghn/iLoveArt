@@ -68,7 +68,7 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row], text: modelController.imageData[indexPath.row].title), animated: true)
+        print(modelController.artIds)
+        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row], imageTitle: modelController.imageData[indexPath.row].title, artist: modelController.imageData[indexPath.row].artist_display, date: modelController.imageData[indexPath.row].date_display, style: modelController.imageData[indexPath.row].style_title), animated: true)
     }
 }
