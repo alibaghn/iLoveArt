@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = homeViewController
         homeViewController.homeView.searchButton.addAction(UIAction(handler: { [self] _ in
             guard let userWord = homeViewController.homeView.textField.text, !userWord.isEmpty else { return }
-            modelController.searchWord = userWord
+            modelController.searchWord = String(userWord.filter { !$0.isWhitespace })
             print(modelController.searchWord!)
             let navigationController = UINavigationController(rootViewController: resultViewController)
             window?.rootViewController = navigationController

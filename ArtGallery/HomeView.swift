@@ -77,7 +77,9 @@ extension HomeView {
         searchButton.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
         searchButton.contentHorizontalAlignment = .fill
         searchButton.contentVerticalAlignment = .fill
-       
+        searchButton.tintColor = .white
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        textField.leftViewMode = .always
         
     }
 }

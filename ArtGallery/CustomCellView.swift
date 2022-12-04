@@ -42,6 +42,8 @@ extension CustomCellView {
         ])
         
         imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 8.0
+        imageView.clipsToBounds = true
         
     }
 }

@@ -59,6 +59,7 @@ extension DetailView {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         label.numberOfLines = 3
-        
+        imageView.layer.cornerRadius = 8.0
+        imageView.clipsToBounds = true
     }
 }

@@ -62,7 +62,7 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCellView
-        customCell.backgroundColor = UIColor.blue
+
         customCell.imageView.image = modelController.images[indexPath.row]
         return customCell
     }
