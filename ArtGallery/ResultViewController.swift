@@ -21,10 +21,6 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
         Task {
             setupUI()
             resultView.spinner.startAnimating()
@@ -68,6 +64,6 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row], imageTitle: modelController.imageData[indexPath.row].title, artist: modelController.imageData[indexPath.row].artist_display, date: modelController.imageData[indexPath.row].date_display, style: modelController.imageData[indexPath.row].style_title), animated: true)
+        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row], imageTitle: modelController.imageData[indexPath.row].title, artist: modelController.imageData[indexPath.row].artist_display, date: modelController.imageData[indexPath.row].date_display, style: modelController.imageData[indexPath.row].style_title), animated: false)
     }
 }
