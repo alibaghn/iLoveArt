@@ -66,7 +66,7 @@ extension DetailView {
         textViewStack.axis = .vertical
         textViewStack.spacing = 10
         vStack.distribution = .fillEqually
-        artistLabel.numberOfLines = 2
-        titleLabel.numberOfLines = 2
+        artistLabel.numberOfLines = 3
+        titleLabel.numberOfLines = 3
     }
 }

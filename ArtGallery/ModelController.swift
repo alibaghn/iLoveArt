@@ -13,17 +13,16 @@ class ModelController {
     var artIds: [Int] = []
     var imageData: [ArtImageData] = []
     var images: [UIImage] = []
-    
-    func reset(){
+
+    func reset() {
         searchWord = nil
         artIds = []
         imageData = []
         images = []
     }
-    
 
     func fetchArts() async {
-        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&fields=id&limit=30")!
+        let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&fields=id&limit=25")!
         let urlRequest = URLRequest(url: url)
         do {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
@@ -53,7 +52,6 @@ class ModelController {
     }
 
     func loadImages() async {
-            
         for item in imageData {
             let url = URL(string: "https://www.artic.edu/iiif/2/\(item.image_id)/full/843,/0/default.jpg")!
             do {
@@ -69,8 +67,4 @@ class ModelController {
             }
         }
     }
-    
-    
 }
-
-
