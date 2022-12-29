@@ -47,5 +47,6 @@ extension ResultView {
         backButton.setImage(image, for: .normal)
         backButton.setTitle("Back", for: .normal)
         backButton.setTitleColor(backButton.tintColor, for: .normal)
+        
     }
 }
