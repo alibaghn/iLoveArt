@@ -17,7 +17,7 @@
                BlueprintIdentifier = "0CFAE7912925E9AE00E2D7D0"
                BuildableName = "iLoveArt.app"
                BlueprintName = "iLoveArt"
-               ReferencedContainer = "container:ArtGallery.xcodeproj">
+               ReferencedContainer = "container:iLoveArt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "0CFAE7912925E9AE00E2D7D0"
             BuildableName = "iLoveArt.app"
             BlueprintName = "iLoveArt"
-            ReferencedContainer = "container:ArtGallery.xcodeproj">
+            ReferencedContainer = "container:iLoveArt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "0CFAE7912925E9AE00E2D7D0"
             BuildableName = "iLoveArt.app"
             BlueprintName = "iLoveArt"
-            ReferencedContainer = "container:ArtGallery.xcodeproj">
+            ReferencedContainer = "container:iLoveArt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

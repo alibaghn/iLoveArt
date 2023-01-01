@@ -117,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0CFAE78D2925E9AE00E2D7D0 /* Build configuration list for PBXProject "ArtGallery" */;
+			buildConfigurationList = 0CFAE78D2925E9AE00E2D7D0 /* Build configuration list for PBXProject "iLoveArt" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -348,7 +348,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CFAE78D2925E9AE00E2D7D0 /* Build configuration list for PBXProject "ArtGallery" */ = {
+		0CFAE78D2925E9AE00E2D7D0 /* Build configuration list for PBXProject "iLoveArt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CFAE7A42925E9AF00E2D7D0 /* Debug */,
