@@ -50,7 +50,7 @@
 		0CFAE7892925E9AE00E2D7D0 = {
 			isa = PBXGroup;
 			children = (
-				0CFAE7942925E9AE00E2D7D0 /* ArtGallery */,
+				0CFAE7942925E9AE00E2D7D0 /* iLoveArt */,
 				0CFAE7932925E9AE00E2D7D0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,7 +63,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0CFAE7942925E9AE00E2D7D0 /* ArtGallery */ = {
+		0CFAE7942925E9AE00E2D7D0 /* iLoveArt */ = {
 			isa = PBXGroup;
 			children = (
 				0CFAE7952925E9AE00E2D7D0 /* AppDelegate.swift */,
@@ -79,7 +79,7 @@
 				0CFAE79E2925E9AF00E2D7D0 /* Assets.xcassets */,
 				0CFAE7A32925E9AF00E2D7D0 /* Info.plist */,
 			);
-			path = ArtGallery;
+			path = iLoveArt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +291,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XX4UPJ8K28;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ArtGallery/Info.plist;
+				INFOPLIST_FILE = iLoveArt/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Art Museum";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -305,7 +305,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.ArtGallery;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.iLoveArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -323,7 +323,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XX4UPJ8K28;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ArtGallery/Info.plist;
+				INFOPLIST_FILE = iLoveArt/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Art Museum";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -337,7 +337,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.ArtGallery;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alibagherinia.iLoveArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
