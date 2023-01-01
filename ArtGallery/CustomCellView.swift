@@ -16,34 +16,27 @@ class CustomCellView: UICollectionViewCell {
         setupUI()
     }
     
-    
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-  
 }
 
 extension CustomCellView {
     func setupUI() {
-//        translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
         
         NSLayoutConstraint.activate([
-           imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-           imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
-           
-           
-           
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
            
         ])
         
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 8.0
         imageView.clipsToBounds = true
-        
     }
 }
