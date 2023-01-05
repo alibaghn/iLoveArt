@@ -10,27 +10,17 @@ import UIKit
 class HomeViewController: UIViewController {
     let homeView = HomeView()
 
-
-
-
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeView.textField.delegate = self
+//        homeView.textField.delegate = self
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
         setupUI()
-       
-        
-
     }
 }
 
 extension HomeViewController {
-
     func setupUI() {
-   
         view.addSubview(homeView)
 
         NSLayoutConstraint.activate([
@@ -39,14 +29,16 @@ extension HomeViewController {
             homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        
-        
     }
 }
 
 extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
+        print("here")
+        guard let userWord = textField.text, !userWord.isEmpty else { return false }
+        ModelController.shared.searchWord = String(userWord.filter { !$0.isWhitespace })
+    
         return true
     }
 }

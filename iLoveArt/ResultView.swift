@@ -20,6 +20,8 @@ class ResultView: UIView {
     }
 }
 
+
+
 extension ResultView {
     func setupUI() {
         translatesAutoresizingMaskIntoConstraints = false
