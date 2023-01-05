@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITextFieldDelegate {
 extension AppDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         homeViewController.view.endEditing(true)
-        print("here")
         onSearch()
         return true
     }

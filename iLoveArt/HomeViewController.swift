@@ -12,7 +12,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        homeView.textField.delegate = self
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
         setupUI()
@@ -35,10 +34,9 @@ extension HomeViewController {
 extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
-        print("here")
         guard let userWord = textField.text, !userWord.isEmpty else { return false }
         ModelController.shared.searchWord = String(userWord.filter { !$0.isWhitespace })
-    
+
         return true
     }
 }
