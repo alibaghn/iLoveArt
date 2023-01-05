@@ -5,23 +5,23 @@
 //  Created by Ali Bagherinia on 11/26/22.
 //
 
+import SDWebImage
 import UIKit
 
 class DetailViewController: UIViewController {
     let detailView = DetailView()
-    let image: UIImage
+    var imageURL: URL
     let imageTitle: String
     let artist: String
     let date: String
     let style: String?
 
-    init(image: UIImage, imageTitle: String, artist: String, date: String, style: String?) {
-        self.image = image
+    init(imageURL: URL, imageTitle: String, artist: String, date: String, style: String?) {
+        self.imageURL = imageURL
         self.imageTitle = imageTitle
         self.artist = artist
         self.date = date
         self.style = date
-        detailView.imageView.image = image
         detailView.titleLabel.text = "Title: \(imageTitle)"
         detailView.styleLabel.text = "Style: \(style ?? "Unknown")"
         detailView.artistLabel.text = "Artist: \(artist)".filter { !$0.isNewline
@@ -37,6 +37,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        detailView.imageView.sd_setImage(with: imageURL)
         setupUI()
     }
 }

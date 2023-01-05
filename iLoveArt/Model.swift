@@ -26,3 +26,5 @@ struct ArtImageData: Codable {
     let date_display: String
     let style_title: String!
 }
+
+

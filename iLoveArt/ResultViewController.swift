@@ -5,8 +5,8 @@
 //  Created by Ali Bagherinia on 11/20/22.
 //
 
-import UIKit
 import SDWebImage
+import UIKit
 
 class ResultViewController: UIViewController {
     let customCellView = CustomCellView()
@@ -26,11 +26,11 @@ class ResultViewController: UIViewController {
             setupUI()
             resultView.spinner.startAnimating()
             await modelController.fetchArts()
-            await modelController.loadImages()
+            resultView.spinner.stopAnimating()
+            modelController.fetchImageLinks()
             resultView.collectionView.dataSource = self
             resultView.collectionView.delegate = self
             resultView.collectionView.register(CustomCellView.self, forCellWithReuseIdentifier: "customCell")
-            resultView.spinner.stopAnimating()
         }
     }
 }
@@ -54,18 +54,17 @@ extension ResultViewController {
 
 extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modelController.images.count
+        return modelController.imageLinks.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCellView
-//        customCell.imageView.image = modelController.images[indexPath.row]
-
+        customCell.imageView.sd_setImage(with: modelController.imageLinks[indexPath.row])
 
         return customCell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(DetailViewController(image: modelController.images[indexPath.row], imageTitle: modelController.imageData[indexPath.row].title, artist: modelController.imageData[indexPath.row].artist_display, date: modelController.imageData[indexPath.row].date_display, style: modelController.imageData[indexPath.row].style_title), animated: false)
+        navigationController?.pushViewController(DetailViewController(imageURL: modelController.imageLinks[indexPath.row], imageTitle: modelController.imageData[indexPath.row].title, artist: modelController.imageData[indexPath.row].artist_display, date: modelController.imageData[indexPath.row].date_display, style: modelController.imageData[indexPath.row].style_title), animated: false)
     }
 }

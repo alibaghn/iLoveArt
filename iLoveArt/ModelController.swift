@@ -12,16 +12,16 @@ class ModelController {
     var searchWord: String!
     var artIds: [Int] = []
     var imageData: [ArtImageData] = []
-    var images: [UIImage] = []
-    
+    var imageLinks: [URL] = []
 
     func reset() {
         searchWord = nil
         artIds = []
         imageData = []
-        images = []
+        imageLinks = []
     }
 
+    // TODO: Dig into async and await, how to load cells one by one? merge with artId
     func fetchArts() async {
         let url = URL(string: "https://api.artic.edu/api/v1/artworks/search?q=\(searchWord!)&fields=id&limit=25")!
         let urlRequest = URLRequest(url: url)
@@ -52,20 +52,10 @@ class ModelController {
         }
     }
 
-    func loadImages() async {
+    func fetchImageLinks() {
         for item in imageData {
             let url = URL(string: "https://www.artic.edu/iiif/2/\(item.image_id)/full/843,/0/default.jpg")!
-            do {
-                let urlRequest = URLRequest(url: url)
-                let (data, response) = try await URLSession.shared.data(for: urlRequest)
-                guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
-                if let newImage = UIImage(data: data) {
-                    images.append(newImage)
-                }
-
-            } catch {
-                print("error: \(error)")
-            }
+            imageLinks.append(url)
         }
     }
 }
