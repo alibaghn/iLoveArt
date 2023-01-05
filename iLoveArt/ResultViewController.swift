@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ResultViewController: UIViewController {
     let customCellView = CustomCellView()
@@ -53,13 +54,14 @@ extension ResultViewController {
 
 extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modelController.imageData.count
+        return modelController.images.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCellView
+//        customCell.imageView.image = modelController.images[indexPath.row]
 
-        customCell.imageView.image = modelController.images[indexPath.row]
+
         return customCell
     }
 

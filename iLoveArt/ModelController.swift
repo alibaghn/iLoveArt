@@ -13,6 +13,7 @@ class ModelController {
     var artIds: [Int] = []
     var imageData: [ArtImageData] = []
     var images: [UIImage] = []
+    
 
     func reset() {
         searchWord = nil
